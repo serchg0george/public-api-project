@@ -1,0 +1,77 @@
+/* General card styling */
+mat-card {
+  margin: 20px 0;
+  padding: 20px;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.animal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+/* Button group styling */
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Table styling */
+.animal-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+mat-header-cell, mat-cell {
+  padding: 10px;
+  text-align: left;
+}
+
+mat-header-cell {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+mat-cell {
+  background-color: white;
+}
+
+/* Row hover effect */
+mat-row:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Action buttons styling */
+mat-button {
+  margin-right: 10px;
+}
+
+/* No data message */
+mat-card-subtitle {
+  text-align: center;
+  color: #757575;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

@@ -1,0 +1,106 @@
+<mat-card>
+  <mat-card-title>Animal Management</mat-card-title>
+  
+  <!-- Animal Form: Add or Update -->
+  <form [formGroup]="animalForm" (ngSubmit)="selectedAnimal ? updateAnimal() : addAnimal()" class="animal-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter animal name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Species</mat-label>
+      <input matInput formControlName="species" placeholder="Enter species" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput formControlName="age" type="number" placeholder="Enter age" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Cage Number</mat-label>
+      <input matInput formControlName="cage" placeholder="Enter cage number" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Health Status</mat-label>
+      <input matInput formControlName="health" placeholder="Enter health status" required>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" type="submit">
+        {{ selectedAnimal ? 'Update Animal' : 'Add Animal' }}
+      </button>
+      <button mat-raised-button color="accent" type="button" (click)="resetForm()" *ngIf="selectedAnimal">
+        Cancel Edit
+      </button>
+    </div>
+  </form>
+</mat-card>
+
+<!-- Search bar -->
+<mat-form-field appearance="outline" class="search-bar">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search by name, species, cage number, or health status" />
+</mat-form-field>
+
+<!-- Animal Table -->
+<mat-card>
+  <mat-card-title>Animal List</mat-card-title>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 animal-table">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let animal">{{ animal.id }}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let animal">{{ animal.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Species Column -->
+    <ng-container matColumnDef="species">
+      <mat-header-cell *matHeaderCellDef>Species</mat-header-cell>
+      <mat-cell *matCellDef="let animal">{{ animal.species }}</mat-cell>
+    </ng-container>
+
+    <!-- Age Column -->
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+      <mat-cell *matCellDef="let animal">{{ animal.age }}</mat-cell>
+    </ng-container>
+
+    <!-- Cage Number Column -->
+    <ng-container matColumnDef="cage">
+      <mat-header-cell *matHeaderCellDef>Cage Number</mat-header-cell>
+      <mat-cell *matCellDef="let animal">{{ animal.cage.cageNumber }}</mat-cell>
+    </ng-container>
+
+    <!-- Health Status Column -->
+    <ng-container matColumnDef="health">
+      <mat-header-cell *matHeaderCellDef>Health Status</mat-header-cell>
+      <mat-cell *matCellDef="let animal">{{ animal.health.status }}</mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let animal">
+        <button mat-button color="primary" (click)="editAnimal(animal)">Edit</button>
+        <button mat-button color="warn" (click)="deleteAnimal(animal.id)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Header and Row definitions -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+
+  <!-- No data message -->
+  <mat-card-subtitle *ngIf="dataSource.data.length === 0">No animals found.</mat-card-subtitle>
+</mat-card>
