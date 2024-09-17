@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HealthTableComponent } from './components/health-table/health-table.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { AnimalTableComponent } from './components/animal-table/animal-table.component';
-
+import { UserTableComponent } from './components/user-table/user-table.component';
 const routes: Routes = [
   { path: 'health', component: HealthTableComponent },
   { path: 'data', component: DataTableComponent },
-  {path: 'animal', component: AnimalTableComponent}
+  {path: 'animal', component: AnimalTableComponent},
+  {path: 'user', component: UserTableComponent}
 ];
 
 @NgModule({

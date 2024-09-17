@@ -20,13 +20,15 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { UserTableComponent } from './components/user-table/user-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataTableComponent,
     HealthTableComponent,
-    AnimalTableComponent
+    AnimalTableComponent,
+    UserTableComponent
   ],
   imports: [
     BrowserModule,
