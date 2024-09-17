@@ -1,6 +1,5 @@
 <mat-card>
-  <mat-card-title>Animal Management</mat-card-title>
-  
+   
   <!-- Animal Form: Add or Update -->
   <form [formGroup]="animalForm" (ngSubmit)="selectedAnimal ? updateAnimal() : addAnimal()" class="animal-form">
     <mat-form-field appearance="fill">

@@ -19,10 +19,10 @@ export class UserTableComponent implements OnInit {
     this.dataSource.filterPredicate = (data: any, filter: string) => {
       const lowerCaseFilter = filter.trim().toLowerCase();
       return data.email.toLowerCase().includes(lowerCaseFilter)
-      || data.password.toLowerCase().includes(lowerCaseFilter)
-      || data.firstName.toLowerCase().includes(lowerCaseFilter)
-      || data.lastName.toLowerCase().includes(lowerCaseFilter)
-      || data.phoneNumber.toLowerCase().includes(lowerCaseFilter)
+        || data.password.toLowerCase().includes(lowerCaseFilter)
+        || data.firstName.toLowerCase().includes(lowerCaseFilter)
+        || data.lastName.toLowerCase().includes(lowerCaseFilter)
+        || data.phoneNumber.toLowerCase().includes(lowerCaseFilter)
     };
     this.fetchData();
   }
@@ -41,7 +41,7 @@ export class UserTableComponent implements OnInit {
   addUser(): void {
     const newUserData = { ...this.newUser };
     this.service.addUser(newUserData).subscribe((response) => {
-      console.log('New health added:', response);
+      console.log('New user added:', response);
       this.newUser = { email: '', password: '', firstName: '', lastName: '', phoneNumber: '' }
     });
     this.fetchData();
@@ -53,15 +53,15 @@ export class UserTableComponent implements OnInit {
 
   onSubmitEdit(): void {
     this.service.editUser(this.selectedUser.id, this.selectedUser).subscribe((response) => {
-      console.log('Health updated:', response);
-      this.selectedUser = {id: null,  email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
+      console.log('User updated:', response);
+      this.selectedUser = { id: null, email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
     });
     this.fetchData();
   }
 
   deleteUser(id: number): void {
     this.service.deleteUser(id).subscribe(() => {
-      console.log('Health deleted');
+      console.log('User deleted');
     });
     this.fetchData();
   }

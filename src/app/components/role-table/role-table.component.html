@@ -1,0 +1,67 @@
+<mat-card>
+
+    <!-- Add Role Form -->
+    <form (ngSubmit)="addRole()" #addRoleForm="ngForm" class="add-role-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="newRole.name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" name="description" [(ngModel)]="newRole.description" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Add Role</button>
+    </form>
+
+    <!-- Edit Role Form -->
+    <form (ngSubmit)="onSubmitEdit()" *ngIf="selectedRole.id" class="edit-role-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="selectedRole.name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" name="description" [(ngModel)]="selectedRole.description" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Edit Role</button>
+    </form>
+</mat-card>
+
+<!-- Search bar -->
+<mat-form-field appearance="outline" class="search-bar-container">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search by role name or description">
+</mat-form-field>
+
+<!-- Role Table-->
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <button mat-button (click)="editRole(element)">Edit</button>
+            <button mat-button color="warn" (click)="deleteRole(element.id)">Delete</button>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Table Header and Rows -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<!-- No users message -->
+<mat-card-subtitle *ngIf="dataSource.data.length === 0">No users found</mat-card-subtitle>

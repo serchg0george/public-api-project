@@ -21,6 +21,7 @@ import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { UserTableComponent } from './components/user-table/user-table.component';
+import { RoleTableComponent } from './components/role-table/role-table.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserTableComponent } from './components/user-table/user-table.component
     DataTableComponent,
     HealthTableComponent,
     AnimalTableComponent,
-    UserTableComponent
+    UserTableComponent,
+    RoleTableComponent
   ],
   imports: [
     BrowserModule,
