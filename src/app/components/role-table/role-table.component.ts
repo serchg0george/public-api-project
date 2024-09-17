@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleService } from '../../services/role-service/role.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { response } from 'express';
 
 @Component({
   selector: 'app-role-table',
@@ -43,6 +42,7 @@ export class RoleTableComponent implements OnInit {
       this.newRole = { name: '', description: '' };
     });
     this.fetchData();
+    this.reloadPage();
   }
 
   editRole(role: any): void {
@@ -55,12 +55,16 @@ export class RoleTableComponent implements OnInit {
       this.selectedRole = { id: null, name: '', description: '' };
     });
     this.fetchData();
+    this.reloadPage();
   }
 
   deleteRole(id: number): void {
     this.service.deleteRole(id).subscribe(() => {
       console.log('Role deleted');
     });
-    this.fetchData();
+    this.reloadPage();
+  }
+  reloadPage() {
+    window.location.reload();
   }
 }

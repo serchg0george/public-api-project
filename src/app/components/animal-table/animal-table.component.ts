@@ -61,6 +61,7 @@ export class AnimalTableComponent implements OnInit {
     });
     this.animalForm.reset();
     this.fetchAnimals();
+    this.reloadPage();
   }
 
   editAnimal(animal: Animal): void {
@@ -73,6 +74,7 @@ export class AnimalTableComponent implements OnInit {
       health: animal.health.status
     });
     this.fetchAnimals();
+    this.reloadPage();
   }
 
   updateAnimal(): void {
@@ -95,6 +97,7 @@ export class AnimalTableComponent implements OnInit {
       this.fetchAnimals();
     }
     this.fetchAnimals();
+    this.reloadPage();
   }
 
   deleteAnimal(id: number): void {
@@ -103,11 +106,16 @@ export class AnimalTableComponent implements OnInit {
       this.fetchAnimals();  // Refresh the table
     });
     this.fetchAnimals();
+    this.reloadPage();
   }
 
   // Reset form and selection
   resetForm(): void {
     this.selectedAnimal = null;
     this.animalForm.reset();
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }

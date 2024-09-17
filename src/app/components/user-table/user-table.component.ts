@@ -45,6 +45,7 @@ export class UserTableComponent implements OnInit {
       this.newUser = { email: '', password: '', firstName: '', lastName: '', phoneNumber: '' }
     });
     this.fetchData();
+    this.reloadPage();
   }
 
   editUser(user: any): void {
@@ -57,6 +58,7 @@ export class UserTableComponent implements OnInit {
       this.selectedUser = { id: null, email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
     });
     this.fetchData();
+    this.reloadPage();
   }
 
   deleteUser(id: number): void {
@@ -64,5 +66,10 @@ export class UserTableComponent implements OnInit {
       console.log('User deleted');
     });
     this.fetchData();
+    this.reloadPage();
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }

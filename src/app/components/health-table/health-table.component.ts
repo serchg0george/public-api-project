@@ -31,7 +31,7 @@ export class HealthTableComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  
+
   addHealth(): void {
     const newHealthData = { ...this.newHealth };
     this.service.addHealth(newHealthData).subscribe((response) => {
@@ -39,6 +39,7 @@ export class HealthTableComponent implements OnInit {
       this.newHealth = { status: '' };
     });
     this.fetchData();
+    this.reloadPage();
   }
 
   editHealth(health: any): void {
@@ -51,6 +52,7 @@ export class HealthTableComponent implements OnInit {
       this.selectedHealth = { id: null, healthStatus: '' };
     });
     this.fetchData();
+    this.reloadPage();
   }
 
   deleteHealth(id: number): void {
@@ -58,5 +60,10 @@ export class HealthTableComponent implements OnInit {
       console.log('Health deleted');
     });
     this.fetchData();
+    this.reloadPage();
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }
