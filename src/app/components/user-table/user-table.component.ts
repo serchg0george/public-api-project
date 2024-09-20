@@ -45,7 +45,6 @@ export class UserTableComponent implements OnInit {
       this.newUser = { email: '', password: '', firstName: '', lastName: '', phoneNumber: '' }
     });
     this.fetchData();
-    this.reloadPage();
   }
 
   editUser(user: any): void {

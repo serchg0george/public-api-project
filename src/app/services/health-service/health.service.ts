@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Health } from '../../interfaces/health.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,11 @@ export class HealthService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  addHealth(health: { status: string }): Observable<any> {
+  addHealth(health: Health): Observable<any> {
     return this.http.post(this.apiUrl, health);
   }
 
-  editHealth(id: number, health: { id: number; status: string }):
+  editHealth(id: number, health: Health):
     Observable<any> {
     return this.http.put(this.apiUrl + '/' + id, health);
   }

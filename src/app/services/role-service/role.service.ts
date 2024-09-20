@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
+import { Role } from '../../interfaces/role.model'
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +14,11 @@ export class RoleService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  addRole(role: {
-    name: string,
-    description: string
-  }): Observable<any> {
+  addRole(role: Role): Observable<any> {
     return this.http.post(this.apiUrl, role);
   }
 
-  editRole(id: number, role: {
-    name: string,
-    description: string
-  }): Observable<any> {
+  editRole(id: number, role: Role): Observable<any> {
     return this.http.put(this.apiUrl + '/' + id, role);
   }
 

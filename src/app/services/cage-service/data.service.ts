@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Cage } from '../../interfaces/cage.model'
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +14,16 @@ export class DataService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  addData(data: {cageNumber: string, availability: string}): Observable<any> {
-    return this.http.post(this.apiUrl, data);
+  addData(cage: Cage): Observable<any> {
+    return this.http.post(this.apiUrl, cage);
   }
 
   deleteData(id: number): Observable<any> {
     return this.http.delete(this.apiUrl + '/' + id)
   }
 
-  editData(id: number, data: {id:number; cageNumber: string; availability: string}):
-   Observable<any> {
-    return this.http.put(this.apiUrl + '/' + id, data);
+  editData(id: number, cage: Cage):
+    Observable<any> {
+    return this.http.put(this.apiUrl + '/' + id, cage);
   }
 }

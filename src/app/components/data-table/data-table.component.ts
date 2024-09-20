@@ -17,12 +17,12 @@ export class DataTableComponent implements OnInit {
   constructor(private service: DataService) { }
 
   ngOnInit(): void {
-    this.fetchData();
     this.dataSource.filterPredicate = (data: any, filter: string) => {
       const filterValue = filter.trim().toLowerCase();
       return data.cageNumber.toLowerCase().includes(filterValue) || 
              data.availability.toLowerCase().includes(filterValue);
     };
+    this.fetchData();
   }
 
   applyFilter(event: Event): void {
@@ -50,7 +50,6 @@ export class DataTableComponent implements OnInit {
   editCage(cage: any) {
     this.selectedCage = { ...cage };
     this.fetchData();
-    this.reloadPage();
   }
 
   onSubmitEdit(): void {

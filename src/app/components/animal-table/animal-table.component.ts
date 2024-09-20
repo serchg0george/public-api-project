@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimalService, Animal } from '../../services/animal-service/animal.service';
+import { AnimalService } from '../../services/animal-service/animal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Animal } from '../../interfaces/animal.model';
 
 @Component({
   selector: 'animal-table',

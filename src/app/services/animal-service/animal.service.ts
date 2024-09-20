@@ -1,21 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Animal {
-  id: number,
-  name: string;
-  species: string;
-  age: number;
-  cage: {
-    id: number;
-    cageNumber: string;
-  };
-  health: {
-    id: number;
-    status: string;
-  };
-}
+import { Animal } from '../../interfaces/animal.model';
 
 
 @Injectable({
