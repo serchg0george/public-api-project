@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleService } from '../../services/role-service/role.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { Role } from '../../interfaces/role.model';
 
 @Component({
   selector: 'app-role-table',
@@ -11,16 +12,12 @@ export class RoleTableComponent implements OnInit {
   public displayedColumns: string[] = ['name', 'description', 'actions'];
   public dataSource = new MatTableDataSource<any>();
   public selectedRole: any = { id: null, name: '', description: '' };
-  public newRole: any = { name: '', description: '' };
+  public newRole: Role = { name: '', description: '' };
+  public searchRoleModel: Role = { name: '', description: '' };
 
   constructor(private service: RoleService) { };
 
   ngOnInit(): void {
-    this.dataSource.filterPredicate = (data: any, filter: string) => {
-      const lowerCaseFilter = filter.trim().toLowerCase();
-      return data.name.toLowerCase().includes(lowerCaseFilter)
-        || data.description.toLowerCase().includes(lowerCaseFilter)
-    };
     this.fetchData();
   }
 
@@ -30,9 +27,14 @@ export class RoleTableComponent implements OnInit {
     })
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  searchRole() {
+    if (!this.searchRoleModel.name && !this.searchRoleModel.description) {
+      this.fetchData();
+    } else {
+      this.service.searchRole(this.searchRoleModel).subscribe((response) => {
+        this.dataSource.data = response;
+      });
+    }
   }
 
   addRole(): void {

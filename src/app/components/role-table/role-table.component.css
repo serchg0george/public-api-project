@@ -40,12 +40,16 @@
       min-width: 352px;
     }
   }
-  
-  .search-bar-container {
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  
+    
   mat-form-field {
     width: 100%;
+  }
+
+  .search-bar-wrapper {
+    display: flex;
+    gap: 10px; /* Adjust the gap as needed */
+  }
+  
+  .search-bar-container {
+    flex: 1;
   }

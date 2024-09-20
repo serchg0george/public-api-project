@@ -32,10 +32,16 @@
 </mat-card>
 
 <!-- Search bar -->
-<mat-form-field appearance="outline" class="search-bar-container">
-    <mat-label>Search</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Search by role name or description">
-</mat-form-field>
+<div class="search-bar-wrapper">
+    <mat-form-field appearance="outline" class="search-bar-container">
+        <mat-label>Search by name</mat-label>
+        <input matInput [(ngModel)]="searchRoleModel.name" (ngModelChange)="searchRole()" placeholder="Search by role name or description">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="search-bar-container">
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="searchRoleModel.description" (ngModelChange)="searchRole()" placeholder="Search by role name or description">
+    </mat-form-field>
+</div>
 
 <!-- Role Table-->
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
