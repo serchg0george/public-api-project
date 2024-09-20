@@ -37,3 +37,11 @@ mat-form-field {
   width: 100%;
 }
 
+.search-bar-wrapper {
+  display: flex;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+.search-bar-container {
+  flex: 1;
+}

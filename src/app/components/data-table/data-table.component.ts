@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/cage-service/data.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { Cage } from '../../interfaces/cage.model';
 
 @Component({
   selector: 'data-table',
@@ -13,21 +14,23 @@ export class DataTableComponent implements OnInit {
   public dataSource = new MatTableDataSource<any>();
   public selectedCage: any = { id: null, cageNumber: '', availability: '' };
   public newCage: any = { cageNumber: '', availability: '' };
-  
+  public searchCageModel: Cage = { cageNumber: '', availability: '' }
+
   constructor(private service: DataService) { }
 
   ngOnInit(): void {
-    this.dataSource.filterPredicate = (data: any, filter: string) => {
-      const filterValue = filter.trim().toLowerCase();
-      return data.cageNumber.toLowerCase().includes(filterValue) || 
-             data.availability.toLowerCase().includes(filterValue);
-    };
     this.fetchData();
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  searchCage() {
+    if (!this.searchCageModel.cageNumber && !this.searchCageModel.availability) {
+      this.fetchData();
+    } else {
+      this.service.searchCage(this.searchCageModel).subscribe((response) => {
+        this.dataSource.data = response;
+      });
+    }
+
   }
 
   fetchData(): void {

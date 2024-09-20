@@ -14,6 +14,10 @@ export class DataService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
+  searchCage(cage: Cage): Observable<any> {
+    return this.http.post(this.apiUrl + "/search", cage);
+  }
+
   addData(cage: Cage): Observable<any> {
     return this.http.post(this.apiUrl, cage);
   }
