@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HealthService } from '../../services/health-service/health.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { Health } from '../../interfaces/health.model';
 @Component({
   selector: 'health-table',
   templateUrl: './health-table.component.html',
@@ -11,13 +12,11 @@ export class HealthTableComponent implements OnInit {
   public dataSource = new MatTableDataSource<any>();
   public selectedHealth: any = { id: null, healthStatus: '' };
   public newHealth: any = { status: '' };
+  public searchHealthModel: Health = { status: '' }
 
   constructor(private service: HealthService) { }
 
   ngOnInit(): void {
-    this.dataSource.filterPredicate = (data: any, filter: string) => {
-      return data.status.toLowerCase().includes(filter);
-    };
     this.fetchData();
   }
 
@@ -27,9 +26,15 @@ export class HealthTableComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  searchHealth() {
+    if (!this.searchHealthModel.status) {
+      this.fetchData();
+    } else {
+      this.service.searchHealth(this.searchHealthModel).subscribe((response) => {
+        this.dataSource.data = response;
+      });
+    }
+
   }
 
   addHealth(): void {

@@ -20,8 +20,8 @@
 
 <!-- Search bar -->
 <mat-form-field appearance="outline" class="search-bar-container">
-  <mat-label>Search</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Search by status" />
+  <mat-label>Search by status</mat-label>
+  <input matInput [(ngModel)]="searchHealthModel.status" (ngModelChange)="searchHealth()" placeholder="Search by status" />
 </mat-form-field>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">

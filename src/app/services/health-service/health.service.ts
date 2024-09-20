@@ -10,8 +10,12 @@ export class HealthService {
   private apiUrl = 'http://localhost:8080/api/v1/health'
   constructor(private http: HttpClient) { }
 
-  getHealth(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  searchHealth(health: Health): Observable<any> {
+    return this.http.post(this.apiUrl + "/search", health);
+  }
+
+  getHealth(): Observable<Health[]> {
+    return this.http.get<Health[]>(this.apiUrl);
   }
 
   addHealth(health: Health): Observable<any> {
