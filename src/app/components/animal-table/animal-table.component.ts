@@ -3,6 +3,7 @@ import { AnimalService } from '../../services/animal-service/animal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Animal } from '../../interfaces/animal.model';
+import { response } from 'express';
 
 @Component({
   selector: 'animal-table',
@@ -22,17 +23,15 @@ export class AnimalTableComponent implements OnInit {
     health: new FormControl('')
   });
 
+  public searchAnimalModel = {
+    name: '',
+    species: ''
+  }
+
   constructor(private animalService: AnimalService) { }
 
   ngOnInit(): void {
     this.fetchAnimals();
-    this.dataSource.filterPredicate = (data: Animal, filter: string) => {
-      const lowerCaseFilter = filter.trim().toLowerCase();
-      return data.name.toLowerCase().includes(lowerCaseFilter)
-        || data.species.toLowerCase().includes(lowerCaseFilter)
-        || data.cage.cageNumber.toLowerCase().includes(lowerCaseFilter)
-        || data.health.status.toLowerCase().includes(lowerCaseFilter);
-    };
   }
 
   fetchAnimals(): void {
@@ -41,9 +40,14 @@ export class AnimalTableComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  searchAnimal() {
+    if (!this.searchAnimalModel.name && !this.searchAnimalModel.species) {
+      this.fetchAnimals();
+    } else {
+      this.animalService.searchAnimal(this.searchAnimalModel).subscribe((response) => {
+        this.dataSource.data = response;
+      });
+    }
   }
 
   addAnimal(): void {

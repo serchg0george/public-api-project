@@ -1,5 +1,5 @@
 <mat-card>
-   
+
   <!-- Animal Form: Add or Update -->
   <form [formGroup]="animalForm" (ngSubmit)="selectedAnimal ? updateAnimal() : addAnimal()" class="animal-form">
     <mat-form-field appearance="fill">
@@ -39,10 +39,17 @@
 </mat-card>
 
 <!-- Search bar -->
-<mat-form-field appearance="outline" class="search-bar">
-  <mat-label>Search</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Search by name, species, cage number, or health status" />
-</mat-form-field>
+<div class="search-bar-wrapper">
+  <mat-form-field appearance="outline" class="search-bar">
+    <mat-label>Search by name</mat-label>
+    <input matInput [(ngModel)]="searchAnimalModel.name" (ngModelChange)="searchAnimal()" placeholder="Search by name" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="search-bar">
+    <mat-label>Search by species</mat-label>
+    <input matInput [(ngModel)]="searchAnimalModel.species" (ngModelChange)="searchAnimal()" placeholder="Search by species" />
+  </mat-form-field>
+</div>
+
 
 <!-- Animal Table -->
 <mat-card>
