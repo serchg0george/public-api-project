@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Animal } from '../../interfaces/animal.model';
-
-export interface AnimalSearch {
-  name: string,
-  species: string
-}
+import { AnimalSearch } from '../../interfaces/animalsearch.model';
 
 @Injectable({
   providedIn: 'root'

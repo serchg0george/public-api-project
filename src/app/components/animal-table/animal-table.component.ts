@@ -3,7 +3,7 @@ import { AnimalService } from '../../services/animal-service/animal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Animal } from '../../interfaces/animal.model';
-import { response } from 'express';
+import { AnimalSearch } from '../../interfaces/animalsearch.model';
 
 @Component({
   selector: 'animal-table',
@@ -23,7 +23,7 @@ export class AnimalTableComponent implements OnInit {
     health: new FormControl('')
   });
 
-  public searchAnimalModel = {
+  public searchAnimalModel: AnimalSearch = {
     name: '',
     species: ''
   }
