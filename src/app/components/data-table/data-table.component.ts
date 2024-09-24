@@ -46,13 +46,10 @@ export class DataTableComponent implements OnInit {
       this.newCage = { cageNumber: '', availability: '' };
       this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
   editCage(cage: any) {
     this.selectedCage = { ...cage };
-    this.fetchData();
   }
 
   onSubmitEdit(): void {
@@ -60,8 +57,6 @@ export class DataTableComponent implements OnInit {
       console.log('Item updated:', response);
       this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
   deleteCage(id: number) {
@@ -69,11 +64,6 @@ export class DataTableComponent implements OnInit {
       console.log('Cage deleted');
       this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
-  reloadPage() {
-    window.location.reload();
-  }
 }

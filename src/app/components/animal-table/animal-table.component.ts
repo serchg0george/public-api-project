@@ -60,9 +60,6 @@ export class AnimalTableComponent implements OnInit {
       this.fetchAnimals();
       this.animalForm.reset();
     });
-    this.animalForm.reset();
-    this.fetchAnimals();
-    this.reloadPage();
   }
 
   editAnimal(animal: Animal): void {
@@ -75,7 +72,6 @@ export class AnimalTableComponent implements OnInit {
       health: animal.health.status
     });
     this.fetchAnimals();
-    this.reloadPage();
   }
 
   updateAnimal(): void {
@@ -91,32 +87,24 @@ export class AnimalTableComponent implements OnInit {
 
       this.animalService.editAnimal(this.selectedAnimal.id, updatedAnimal).subscribe((response) => {
         console.log('Animal updated:', response);
-        this.fetchAnimals();  // Refresh the table
+        this.fetchAnimals(); 
         this.selectedAnimal = null;
         this.animalForm.reset();
       });
-      this.fetchAnimals();
     }
-    this.fetchAnimals();
-    this.reloadPage();
+
   }
 
   deleteAnimal(id: number): void {
     this.animalService.deleteAnimal(id).subscribe(() => {
       console.log('Animal deleted');
-      this.fetchAnimals();  // Refresh the table
+      this.fetchAnimals(); 
     });
-    this.fetchAnimals();
-    this.reloadPage();
   }
 
-  // Reset form and selection
   resetForm(): void {
     this.selectedAnimal = null;
     this.animalForm.reset();
   }
 
-  reloadPage() {
-    window.location.reload();
-  }
 }

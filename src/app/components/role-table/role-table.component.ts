@@ -42,9 +42,8 @@ export class RoleTableComponent implements OnInit {
     this.service.addRole(newRoleData).subscribe((response) => {
       console.log('New role added', response);
       this.newRole = { name: '', description: '' };
+      this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
   editRole(role: any): void {
@@ -55,18 +54,15 @@ export class RoleTableComponent implements OnInit {
     this.service.editRole(this.selectedRole.id, this.selectedRole).subscribe((response) => {
       console.log('Role updated:', response);
       this.selectedRole = { id: null, name: '', description: '' };
+      this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
   deleteRole(id: number): void {
     this.service.deleteRole(id).subscribe(() => {
       console.log('Role deleted');
+      this.fetchData();
     });
-    this.reloadPage();
   }
-  reloadPage() {
-    window.location.reload();
-  }
+
 }

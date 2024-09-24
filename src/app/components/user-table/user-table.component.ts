@@ -43,8 +43,8 @@ export class UserTableComponent implements OnInit {
     this.service.addUser(newUserData).subscribe((response) => {
       console.log('New user added:', response);
       this.newUser = { email: '', password: '', firstName: '', lastName: '', phoneNumber: '' }
+      this.fetchData();
     });
-    this.fetchData();
   }
 
   editUser(user: any): void {
@@ -55,20 +55,15 @@ export class UserTableComponent implements OnInit {
     this.service.editUser(this.selectedUser.id, this.selectedUser).subscribe((response) => {
       console.log('User updated:', response);
       this.selectedUser = { id: null, email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
+      this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
   deleteUser(id: number): void {
     this.service.deleteUser(id).subscribe(() => {
       console.log('User deleted');
+      this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
-  reloadPage() {
-    window.location.reload();
-  }
 }

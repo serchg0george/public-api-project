@@ -42,9 +42,8 @@ export class HealthTableComponent implements OnInit {
     this.service.addHealth(newHealthData).subscribe((response) => {
       console.log('New health added:', response);
       this.newHealth = { status: '' };
+      this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
   editHealth(health: any): void {
@@ -55,17 +54,15 @@ export class HealthTableComponent implements OnInit {
     this.service.editHealth(this.selectedHealth.id, this.selectedHealth).subscribe((response) => {
       console.log('Health updated:', response);
       this.selectedHealth = { id: null, healthStatus: '' };
+      this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
   deleteHealth(id: number): void {
     this.service.deleteHealth(id).subscribe(() => {
       console.log('Health deleted');
+      this.fetchData();
     });
-    this.fetchData();
-    this.reloadPage();
   }
 
   reloadPage() {
