@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HealthService } from '../../services/health-service/health.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Health } from '../../interfaces/health.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'health-table',
   templateUrl: './health-table.component.html',
@@ -11,10 +12,9 @@ export class HealthTableComponent implements OnInit {
   public displayedColumns: string[] = ['status', 'updateDate', 'actions'];
   public dataSource = new MatTableDataSource<any>();
   public selectedHealth: any = { id: null, healthStatus: '' };
-  public newHealth: any = { status: '' };
   public searchHealthModel: Health = { status: '' }
 
-  constructor(private service: HealthService) { }
+  constructor(private service: HealthService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -37,13 +37,8 @@ export class HealthTableComponent implements OnInit {
 
   }
 
-  addHealth(): void {
-    const newHealthData = { ...this.newHealth };
-    this.service.addHealth(newHealthData).subscribe((response) => {
-      console.log('New health added:', response);
-      this.newHealth = { status: '' };
-      this.fetchData();
-    });
+  navigateToAddHealth() {
+    this.router.navigate(['/add-health']);
   }
 
   editHealth(health: any): void {

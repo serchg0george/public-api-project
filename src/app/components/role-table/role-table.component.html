@@ -1,20 +1,4 @@
 <mat-card>
-
-    <!-- Add Role Form -->
-    <form (ngSubmit)="addRole()" #addRoleForm="ngForm" class="add-role-form">
-        <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput type="text" name="name" [(ngModel)]="newRole.name" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Description</mat-label>
-            <input matInput type="text" name="description" [(ngModel)]="newRole.description" required>
-        </mat-form-field>
-
-        <button mat-raised-button color="primary" type="submit">Add Role</button>
-    </form>
-
     <!-- Edit Role Form -->
     <form (ngSubmit)="onSubmitEdit()" *ngIf="selectedRole.id" class="edit-role-form">
         <mat-form-field appearance="fill">
@@ -30,6 +14,8 @@
         <button mat-raised-button color="primary" type="submit">Edit Role</button>
     </form>
 </mat-card>
+
+<button (click)="navigateToAddRole()" class="add-role-button">Add Role</button>
 
 <!-- Search bar -->
 <div class="search-bar-wrapper">

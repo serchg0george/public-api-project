@@ -1,0 +1,9 @@
+<form (ngSubmit)="addRole()" class="add-role-form">
+    <label for="name">Name:</label>
+    <input id="name" [(ngModel)]="newRole.name" name="name" required>
+
+    <label for="description">Description:</label>
+    <input id="description" [(ngModel)]="newRole.description" name="description" required>
+
+    <button type="submit">Add Role</button>
+</form>

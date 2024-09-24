@@ -1,34 +1,4 @@
 <mat-card>
-  <!-- Add User Form -->
-  <form (ngSubmit)="addUser()" #addUserForm="ngForm" class="add-user-form">
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" name="email" [(ngModel)]="newUser.email" required>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" name="password" [(ngModel)]="newUser.password" required>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input matInput type="text" name="firstName" [(ngModel)]="newUser.firstName" required>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input matInput type="text" name="lastName" [(ngModel)]="newUser.lastName" required>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Phone Number</mat-label>
-      <input matInput type="text" name="phoneNumber" [(ngModel)]="newUser.phoneNumber" required>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit">Add User</button>
-  </form>
-
   <!-- Edit User Form -->
   <form (ngSubmit)="onSubmitEdit()" *ngIf="selectedUser.id" class="edit-user-form">
     <mat-form-field appearance="fill">
@@ -59,6 +29,8 @@
     <button mat-raised-button color="accent" type="submit">Update</button>
   </form>
 </mat-card>
+
+<button (click)="navigateToAddUser()">Add user</button>
 
 <!-- Search bar -->
 <div class="search-bar-wrapper">

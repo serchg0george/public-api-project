@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoleService } from '../../services/role-service/role.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Role } from '../../interfaces/role.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-role-table',
@@ -15,7 +16,7 @@ export class RoleTableComponent implements OnInit {
   public newRole: Role = { name: '', description: '' };
   public searchRoleModel: Role = { name: '', description: '' };
 
-  constructor(private service: RoleService) { };
+  constructor(private service: RoleService, private router: Router) { };
 
   ngOnInit(): void {
     this.fetchData();
@@ -37,13 +38,17 @@ export class RoleTableComponent implements OnInit {
     }
   }
 
-  addRole(): void {
-    const newRoleData = { ...this.newRole };
-    this.service.addRole(newRoleData).subscribe((response) => {
-      console.log('New role added', response);
-      this.newRole = { name: '', description: '' };
-      this.fetchData();
-    });
+  // addRole(): void {
+  //   const newRoleData = { ...this.newRole };
+  //   this.service.addRole(newRoleData).subscribe((response) => {
+  //     console.log('New role added', response);
+  //     this.newRole = { name: '', description: '' };
+  //     this.fetchData();
+  //   });
+  // }
+
+  navigateToAddRole() {
+    this.router.navigate(['/add-role'])
   }
 
   editRole(role: any): void {

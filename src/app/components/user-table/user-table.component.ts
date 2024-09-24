@@ -3,6 +3,8 @@ import { UserService } from '../../services/user-service/user.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserSearch } from '../../interfaces/usersearch.model';
 import { response } from 'express';
+import { User } from '../../interfaces/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-table',
@@ -13,13 +15,12 @@ export class UserTableComponent implements OnInit {
   public displayedColumns: string[] = ['email', 'password', 'firstName', 'lastName', 'phoneNumber', 'actions'];
   public dataSource = new MatTableDataSource<any>();
   public selectedUser: any = { id: null, email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
-  public newUser: any = { email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
   public searchUserModel: UserSearch = {
     email: '',
     phoneNumber: ''
   }
 
-  constructor(private service: UserService) { };
+  constructor(private service: UserService, private router: Router) { };
 
   ngOnInit(): void {
     this.fetchData();
@@ -41,13 +42,8 @@ export class UserTableComponent implements OnInit {
     }
   }
 
-  addUser(): void {
-    const newUserData = { ...this.newUser };
-    this.service.addUser(newUserData).subscribe((response) => {
-      console.log('New user added:', response);
-      this.newUser = { email: '', password: '', firstName: '', lastName: '', phoneNumber: '' }
-      this.fetchData();
-    });
+  navigateToAddUser() {
+    this.router.navigate(['/add-user']);
   }
 
   editUser(user: any): void {

@@ -1,12 +1,4 @@
 <mat-card>
-  <form (ngSubmit)="addHealth()" #addHealthForm="ngForm" class="add-health-form">
-    <mat-form-field appearance="fill">
-      <mat-label>Status</mat-label>
-      <input matInput type="text" name="status" [(ngModel)]="newHealth.status" required>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit">Add Health</button>
-  </form>
 
   <form (ngSubmit)="onSubmitEdit()" *ngIf="selectedHealth.id" class="edit-health-form">
     <mat-form-field appearance="fill">
@@ -17,7 +9,7 @@
     <button mat-raised-button color="accent" type="submit">Update</button>
   </form>
 </mat-card>
-
+<button (click)="navigateToAddHealth()">Add health</button>
 <!-- Search bar -->
 <mat-form-field appearance="outline" class="search-bar-container">
   <mat-label>Search by status</mat-label>

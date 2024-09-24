@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/cage-service/data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Cage } from '../../interfaces/cage.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'data-table',
@@ -13,10 +14,9 @@ export class DataTableComponent implements OnInit {
   public displayedColumns: string[] = ['cageNumber', 'availability', 'actions'];
   public dataSource = new MatTableDataSource<any>();
   public selectedCage: any = { id: null, cageNumber: '', availability: '' };
-  public newCage: any = { cageNumber: '', availability: '' };
   public searchCageModel: Cage = { cageNumber: '', availability: '' }
 
-  constructor(private service: DataService) { }
+  constructor(private service: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -39,13 +39,8 @@ export class DataTableComponent implements OnInit {
     });
   }
 
-  addCage(): void {
-    const newCageData = { ...this.newCage };
-    this.service.addData(newCageData).subscribe((response) => {
-      console.log('New cage added:', response);
-      this.newCage = { cageNumber: '', availability: '' };
-      this.fetchData();
-    });
+  navigateToAddCage() {
+    this.router.navigate(['/add-cage'])
   }
 
   editCage(cage: any) {

@@ -1,7 +1,7 @@
 <mat-card>
 
   <!-- Animal Form: Add or Update -->
-  <form [formGroup]="animalForm" (ngSubmit)="selectedAnimal ? updateAnimal() : addAnimal()" class="animal-form">
+  <form [formGroup]="animalForm" (ngSubmit)="updateAnimal()" class="animal-form">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name" placeholder="Enter animal name" required>
@@ -29,7 +29,7 @@
 
     <div class="button-group">
       <button mat-raised-button color="primary" type="submit">
-        {{ selectedAnimal ? 'Update Animal' : 'Add Animal' }}
+        Update animal
       </button>
       <button mat-raised-button color="accent" type="button" (click)="resetForm()" *ngIf="selectedAnimal">
         Cancel Edit
@@ -37,7 +37,7 @@
     </div>
   </form>
 </mat-card>
-
+<button (click)="navigateToAddAnimal()">Add animal</button>
 <!-- Search bar -->
 <div class="search-bar-wrapper">
   <mat-form-field appearance="outline" class="search-bar">

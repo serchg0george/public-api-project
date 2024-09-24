@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Animal } from '../../interfaces/animal.model';
 import { AnimalSearch } from '../../interfaces/animalsearch.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'animal-table',
@@ -28,7 +29,7 @@ export class AnimalTableComponent implements OnInit {
     species: ''
   }
 
-  constructor(private animalService: AnimalService) { }
+  constructor(private animalService: AnimalService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchAnimals();
@@ -50,20 +51,8 @@ export class AnimalTableComponent implements OnInit {
     }
   }
 
-  addAnimal(): void {
-    const newAnimal = {
-      name: this.animalForm.get('name')?.value,
-      species: this.animalForm.get('species')?.value,
-      age: this.animalForm.get('age')?.value,
-      cage: { cageNumber: this.animalForm.get('cage')?.value },
-      health: { status: this.animalForm.get('health')?.value }
-    } as Partial<Animal>;
-
-    this.animalService.addAnimal(newAnimal as Animal).subscribe((response) => {
-      console.log('Animal added:', response);
-      this.fetchAnimals();
-      this.animalForm.reset();
-    });
+  navigateToAddAnimal() {
+    this.router.navigate(['/add-animal']);
   }
 
   editAnimal(animal: Animal): void {

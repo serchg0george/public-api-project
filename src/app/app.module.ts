@@ -22,6 +22,11 @@ import { MatIcon } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { RoleTableComponent } from './components/role-table/role-table.component';
+import { RoleAddComponent } from './components/addforms/role-add/role-add.component';
+import { CageAddComponent } from './components/addforms/cage-add/cage-add.component';
+import { UserAddComponent } from './components/addforms/user-add/user-add.component';
+import { HealthAddComponent } from './components/addforms/health-add/health-add.component';
+import { AnimalAddComponent } from './components/addforms/animal-add/animal-add.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { RoleTableComponent } from './components/role-table/role-table.component
     HealthTableComponent,
     AnimalTableComponent,
     UserTableComponent,
-    RoleTableComponent
+    RoleTableComponent,
+    RoleAddComponent,
+    CageAddComponent,
+    UserAddComponent,
+    HealthAddComponent,
+    AnimalAddComponent
   ],
   imports: [
     BrowserModule,
