@@ -27,6 +27,10 @@
     margin-right: 10px;
   }
   
+  .search-bar-wrapper {
+    display: flex;
+    gap: 10px;
+  }
   .search-bar-container {
     padding: 0px 56px 0px 8px;
     border-radius: 32px;
@@ -40,10 +44,8 @@
       min-width: 352px;
     }
   }
-  
   .search-bar-container {
-    margin-bottom: 20px;
-    width: 100%;
+    flex: 1;
   }
   
   mat-form-field {

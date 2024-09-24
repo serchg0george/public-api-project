@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user-service/user.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { UserSearch } from '../../interfaces/usersearch.model';
+import { response } from 'express';
 
 @Component({
   selector: 'app-user-table',
@@ -12,18 +14,14 @@ export class UserTableComponent implements OnInit {
   public dataSource = new MatTableDataSource<any>();
   public selectedUser: any = { id: null, email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
   public newUser: any = { email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
+  public searchUserModel: UserSearch = {
+    email: '',
+    phoneNumber: ''
+  }
 
   constructor(private service: UserService) { };
 
   ngOnInit(): void {
-    this.dataSource.filterPredicate = (data: any, filter: string) => {
-      const lowerCaseFilter = filter.trim().toLowerCase();
-      return data.email.toLowerCase().includes(lowerCaseFilter)
-        || data.password.toLowerCase().includes(lowerCaseFilter)
-        || data.firstName.toLowerCase().includes(lowerCaseFilter)
-        || data.lastName.toLowerCase().includes(lowerCaseFilter)
-        || data.phoneNumber.toLowerCase().includes(lowerCaseFilter)
-    };
     this.fetchData();
   }
 
@@ -33,9 +31,14 @@ export class UserTableComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  searchUser() {
+    if (!this.searchUserModel.email && !this.searchUserModel.phoneNumber) {
+      this.fetchData();
+    } else {
+      this.service.searchUser(this.searchUserModel).subscribe((response) => {
+        this.dataSource.data = response;
+      });
+    }
   }
 
   addUser(): void {
