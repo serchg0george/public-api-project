@@ -3,6 +3,7 @@ import { RoleService } from '../../services/role-service/role.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Role } from '../../interfaces/role.model';
 import { Router } from '@angular/router';
+import { RoleSearch } from '../../interfaces/rolesearch.model';
 
 @Component({
   selector: 'app-role-table',
@@ -14,7 +15,7 @@ export class RoleTableComponent implements OnInit {
   public dataSource = new MatTableDataSource<any>();
   public selectedRole: any = { id: null, name: '', description: '' };
   public newRole: Role = { name: '', description: '' };
-  public searchRoleModel: Role = { name: '', description: '' };
+  public searchRoleModel: RoleSearch = { query: ''};
 
   constructor(private service: RoleService, private router: Router) { };
 
@@ -29,7 +30,7 @@ export class RoleTableComponent implements OnInit {
   }
 
   searchRole() {
-    if (!this.searchRoleModel.name && !this.searchRoleModel.description) {
+    if (!this.searchRoleModel.query) {
       this.fetchData();
     } else {
       this.service.searchRole(this.searchRoleModel).subscribe((response) => {
@@ -37,15 +38,6 @@ export class RoleTableComponent implements OnInit {
       });
     }
   }
-
-  // addRole(): void {
-  //   const newRoleData = { ...this.newRole };
-  //   this.service.addRole(newRoleData).subscribe((response) => {
-  //     console.log('New role added', response);
-  //     this.newRole = { name: '', description: '' };
-  //     this.fetchData();
-  //   });
-  // }
 
   navigateToAddRole() {
     this.router.navigate(['/add-role'])

@@ -3,6 +3,7 @@ import { DataService } from '../../services/cage-service/data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Cage } from '../../interfaces/cage.model';
 import { Router } from '@angular/router';
+import { CageSearch } from '../../interfaces/cagesearch.model';
 
 @Component({
   selector: 'data-table',
@@ -14,7 +15,7 @@ export class DataTableComponent implements OnInit {
   public displayedColumns: string[] = ['cageNumber', 'availability', 'actions'];
   public dataSource = new MatTableDataSource<any>();
   public selectedCage: any = { id: null, cageNumber: '', availability: '' };
-  public searchCageModel: Cage = { cageNumber: '', availability: '' }
+  public searchCageModel: CageSearch = { query: '' }
 
   constructor(private service: DataService, private router: Router) { }
 
@@ -23,7 +24,7 @@ export class DataTableComponent implements OnInit {
   }
 
   searchCage() {
-    if (!this.searchCageModel.cageNumber && !this.searchCageModel.availability) {
+    if (!this.searchCageModel.query) {
       this.fetchData();
     } else {
       this.service.searchCage(this.searchCageModel).subscribe((response) => {

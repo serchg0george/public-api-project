@@ -18,12 +18,8 @@
 <!-- Search bar -->
 <div class="search-bar-wrapper">
     <mat-form-field appearance="outline" class="search-bar-container">
-        <mat-label>Search by name</mat-label>
-        <input matInput [(ngModel)]="searchRoleModel.name" (ngModelChange)="searchRole()" placeholder="Search by name">
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="search-bar-container">
-        <mat-label>Search by description</mat-label>
-        <input matInput [(ngModel)]="searchRoleModel.description" (ngModelChange)="searchRole()" placeholder="Search by description">
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="searchRoleModel.query" (ngModelChange)="searchRole()" placeholder="Search" />
     </mat-form-field>
 </div>
 

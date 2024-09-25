@@ -3,6 +3,7 @@ import { HealthService } from '../../services/health-service/health.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Health } from '../../interfaces/health.model';
 import { Router } from '@angular/router';
+import { HealthSearch } from '../../interfaces/healthsearch.model';
 @Component({
   selector: 'health-table',
   templateUrl: './health-table.component.html',
@@ -12,7 +13,7 @@ export class HealthTableComponent implements OnInit {
   public displayedColumns: string[] = ['status', 'updateDate', 'actions'];
   public dataSource = new MatTableDataSource<any>();
   public selectedHealth: any = { id: null, healthStatus: '' };
-  public searchHealthModel: Health = { status: '' }
+  public searchHealthModel: HealthSearch = { status: '' }
 
   constructor(private service: HealthService, private router: Router) { }
 

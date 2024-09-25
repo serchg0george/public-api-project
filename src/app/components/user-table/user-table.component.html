@@ -33,14 +33,11 @@
 <!-- Search bar -->
 <div class="search-bar-wrapper">
   <mat-form-field appearance="outline" class="search-bar-container">
-    <mat-label>Search by email</mat-label>
-    <input matInput [(ngModel)]="searchUserModel.email" (ngModelChange)="searchUser()" placeholder="Search by email" />
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="search-bar-container">
-    <mat-label>Search by phone number</mat-label>
-    <input matInput [(ngModel)]="searchUserModel.phoneNumber" (ngModelChange)="searchUser()" placeholder="Search by phone number" />
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="searchUserModel.query" (ngModelChange)="searchUser()" placeholder="Search" />
   </mat-form-field>
 </div>
+
 
 <button mat-raised-button (click)="navigateToAddUser()">Add user</button>
 

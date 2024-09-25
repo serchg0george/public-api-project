@@ -25,8 +25,7 @@ export class AnimalTableComponent implements OnInit {
   });
 
   public searchAnimalModel: AnimalSearch = {
-    name: '',
-    species: ''
+    query: ''
   }
 
   constructor(private animalService: AnimalService, private router: Router) { }
@@ -42,7 +41,7 @@ export class AnimalTableComponent implements OnInit {
   }
 
   searchAnimal() {
-    if (!this.searchAnimalModel.name && !this.searchAnimalModel.species) {
+    if (!this.searchAnimalModel.query) {
       this.fetchAnimals();
     } else {
       this.animalService.searchAnimal(this.searchAnimalModel).subscribe((response) => {

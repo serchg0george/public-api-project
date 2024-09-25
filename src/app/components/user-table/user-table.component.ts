@@ -16,8 +16,7 @@ export class UserTableComponent implements OnInit {
   public dataSource = new MatTableDataSource<any>();
   public selectedUser: any = { id: null, email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
   public searchUserModel: UserSearch = {
-    email: '',
-    phoneNumber: ''
+    query: ''
   }
 
   constructor(private service: UserService, private router: Router) { };
@@ -33,7 +32,7 @@ export class UserTableComponent implements OnInit {
   }
 
   searchUser() {
-    if (!this.searchUserModel.email && !this.searchUserModel.phoneNumber) {
+    if (!this.searchUserModel.query) {
       this.fetchData();
     } else {
       this.service.searchUser(this.searchUserModel).subscribe((response) => {

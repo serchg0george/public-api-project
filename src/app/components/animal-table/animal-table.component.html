@@ -41,13 +41,10 @@
 <!-- Search bar -->
 <div class="search-bar-wrapper">
   <mat-form-field appearance="outline" class="search-bar">
-    <mat-label>Search by name</mat-label>
-    <input matInput [(ngModel)]="searchAnimalModel.name" (ngModelChange)="searchAnimal()" placeholder="Search by name" />
+    <mat-label>Search by name or species</mat-label>
+    <input matInput [(ngModel)]="searchAnimalModel.query" (ngModelChange)="searchAnimal()" placeholder="Search" />
   </mat-form-field>
-  <mat-form-field appearance="outline" class="search-bar">
-    <mat-label>Search by species</mat-label>
-    <input matInput [(ngModel)]="searchAnimalModel.species" (ngModelChange)="searchAnimal()" placeholder="Search by species" />
-  </mat-form-field>
+
 </div>
 
 <button mat-raised-button (click)="navigateToAddAnimal()">Add animal</button>
