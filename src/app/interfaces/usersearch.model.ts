@@ -1,4 +1,3 @@
 export interface UserSearch {
-    email: string,
-    phoneNumber: string
+    query: string
 }

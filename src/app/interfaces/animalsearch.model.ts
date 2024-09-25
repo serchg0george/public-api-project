@@ -1,4 +1,3 @@
 export interface AnimalSearch {
-    name: string,
-    species: string
+    query: string
 }
