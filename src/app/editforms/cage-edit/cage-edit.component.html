@@ -1,0 +1,15 @@
+<mat-card>
+    <form (ngSubmit)="onSubmitEdit()" class="edit-cage-form">
+        <mat-form-field>
+            <mat-label>Cage Number</mat-label>
+            <input matInput type="text" name="cageNumber" [(ngModel)]="cage.cageNumber" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Availability</mat-label>
+            <input matInput type="text" name="availability" [(ngModel)]="cage.availability" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" type="submit">Update</button>
+    </form>
+</mat-card>

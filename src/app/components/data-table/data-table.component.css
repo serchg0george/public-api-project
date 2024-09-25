@@ -32,8 +32,17 @@ mat-form-field {
 }
 
 .search-bar-wrapper {
+  padding: 30px 56px 0px 8px;
+  border-radius: 32px;
   display: flex;
-  gap: 10px; /* Adjust the gap as needed */
+  align-items: center;
+  > input {
+    font-size: 1.1rem;
+    outline: none;
+    border: none;
+    background: inherit;
+    min-width: 352px;
+  }
 }
 
 .search-bar-container {

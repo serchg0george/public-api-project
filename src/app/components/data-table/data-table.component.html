@@ -1,19 +1,3 @@
-<mat-card>
-  <form (ngSubmit)="onSubmitEdit()" *ngIf="selectedCage.id" class="edit-cage-form">
-    <mat-form-field>
-      <mat-label>Cage Number</mat-label>
-      <input matInput type="text" name="cageNumber" [(ngModel)]="selectedCage.cageNumber" required>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Availability</mat-label>
-      <input matInput type="text" name="availability" [(ngModel)]="selectedCage.availability" required>
-    </mat-form-field>
-
-    <button mat-raised-button color="accent" type="submit">Update</button>
-  </form>
-</mat-card>
-
 <!-- Search bar -->
 <div class="search-bar-wrapper">
   <mat-form-field appearance="outline" class="search-bar-container">

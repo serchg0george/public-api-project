@@ -14,7 +14,6 @@ export class DataTableComponent implements OnInit {
 
   public displayedColumns: string[] = ['cageNumber', 'availability', 'actions'];
   public dataSource = new MatTableDataSource<any>();
-  public selectedCage: any = { id: null, cageNumber: '', availability: '' };
   public searchCageModel: CageSearch = { query: '' }
 
   constructor(private service: DataService, private router: Router) { }
@@ -45,14 +44,7 @@ export class DataTableComponent implements OnInit {
   }
 
   editCage(cage: any) {
-    this.selectedCage = { ...cage };
-  }
-
-  onSubmitEdit(): void {
-    this.service.editData(this.selectedCage.id, this.selectedCage).subscribe((response) => {
-      console.log('Item updated:', response);
-      this.fetchData();
-    });
+    this.router.navigate(['/edit-cage', { cage: JSON.stringify(cage) }]);
   }
 
   deleteCage(id: number) {
