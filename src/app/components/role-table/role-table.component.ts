@@ -13,9 +13,8 @@ import { RoleSearch } from '../../interfaces/rolesearch.model';
 export class RoleTableComponent implements OnInit {
   public displayedColumns: string[] = ['name', 'description', 'actions'];
   public dataSource = new MatTableDataSource<any>();
-  public selectedRole: any = { id: null, name: '', description: '' };
   public newRole: Role = { name: '', description: '' };
-  public searchRoleModel: RoleSearch = { query: ''};
+  public searchRoleModel: RoleSearch = { query: '' };
 
   constructor(private service: RoleService, private router: Router) { };
 
@@ -44,16 +43,9 @@ export class RoleTableComponent implements OnInit {
   }
 
   editRole(role: any): void {
-    this.selectedRole = { ...role };
+    this.router.navigate(['/edit-role', { role: JSON.stringify(role) }])
   }
 
-  onSubmitEdit(): void {
-    this.service.editRole(this.selectedRole.id, this.selectedRole).subscribe((response) => {
-      console.log('Role updated:', response);
-      this.selectedRole = { id: null, name: '', description: '' };
-      this.fetchData();
-    });
-  }
 
   deleteRole(id: number): void {
     this.service.deleteRole(id).subscribe(() => {

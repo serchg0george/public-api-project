@@ -1,0 +1,16 @@
+<mat-card>
+    <!-- Edit Role Form -->
+    <form (ngSubmit)="onSubmitEdit()" *ngIf="role.id" class="edit-role-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="role.name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" name="description" [(ngModel)]="role.description" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Edit Role</button>
+    </form>
+</mat-card>
