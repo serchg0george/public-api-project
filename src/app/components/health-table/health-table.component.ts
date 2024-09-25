@@ -12,7 +12,6 @@ import { HealthSearch } from '../../interfaces/healthsearch.model';
 export class HealthTableComponent implements OnInit {
   public displayedColumns: string[] = ['status', 'updateDate', 'actions'];
   public dataSource = new MatTableDataSource<any>();
-  public selectedHealth: any = { id: null, healthStatus: '' };
   public searchHealthModel: HealthSearch = { status: '' }
 
   constructor(private service: HealthService, private router: Router) { }
@@ -43,15 +42,7 @@ export class HealthTableComponent implements OnInit {
   }
 
   editHealth(health: any): void {
-    this.selectedHealth = { ...health };
-  }
-
-  onSubmitEdit(): void {
-    this.service.editHealth(this.selectedHealth.id, this.selectedHealth).subscribe((response) => {
-      console.log('Health updated:', response);
-      this.selectedHealth = { id: null, healthStatus: '' };
-      this.fetchData();
-    });
+    this.router.navigate(['/edit-health', { health: JSON.stringify(health) }]);
   }
 
   deleteHealth(id: number): void {
