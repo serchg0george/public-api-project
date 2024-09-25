@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Health } from '../../interfaces/health.model';
+import { HealthSearch } from '../../interfaces/healthsearch.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class HealthService {
   private apiUrl = 'http://localhost:8080/api/v1/health'
   constructor(private http: HttpClient) { }
 
-  searchHealth(health: Health): Observable<any> {
+  searchHealth(health: HealthSearch): Observable<any> {
     return this.http.post(this.apiUrl + "/search", health);
   }
 

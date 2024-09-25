@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cage } from '../../interfaces/cage.model'
+import { CageSearch } from '../../interfaces/cagesearch.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DataService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  searchCage(cage: Cage): Observable<any> {
+  searchCage(cage: CageSearch): Observable<any> {
     return this.http.post(this.apiUrl + "/search", cage);
   }
 
