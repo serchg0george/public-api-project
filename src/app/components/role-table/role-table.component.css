@@ -4,21 +4,6 @@
     margin-bottom: 20px;
   }
   
-  button.add-role-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button.add-role-button:hover {
-    background-color: #0056b3;
-  }
-  
   mat-form-field {
     width: 100%;
     margin-bottom: 10px;
