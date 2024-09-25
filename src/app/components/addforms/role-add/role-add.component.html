@@ -1,9 +1,14 @@
 <form (ngSubmit)="addRole()" class="add-role-form">
-    <label for="name">Name:</label>
-    <input id="name" [(ngModel)]="newRole.name" name="name" required>
-
-    <label for="description">Description:</label>
-    <input id="description" [(ngModel)]="newRole.description" name="description" required>
-
-    <button type="submit">Add Role</button>
-</form>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput id="name" [(ngModel)]="newRole.name" name="name" required>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput id="description" [(ngModel)]="newRole.description" name="description" required>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Add Role</button>
+  </form>
+  
