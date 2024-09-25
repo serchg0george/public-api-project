@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user-service/user.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserSearch } from '../../interfaces/usersearch.model';
-import { response } from 'express';
-import { User } from '../../interfaces/user.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +12,6 @@ import { Router } from '@angular/router';
 export class UserTableComponent implements OnInit {
   public displayedColumns: string[] = ['email', 'password', 'firstName', 'lastName', 'phoneNumber', 'actions'];
   public dataSource = new MatTableDataSource<any>();
-  public selectedUser: any = { id: null, email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
   public searchUserModel: UserSearch = {
     query: ''
   }
@@ -46,15 +43,7 @@ export class UserTableComponent implements OnInit {
   }
 
   editUser(user: any): void {
-    this.selectedUser = { ...user };
-  }
-
-  onSubmitEdit(): void {
-    this.service.editUser(this.selectedUser.id, this.selectedUser).subscribe((response) => {
-      console.log('User updated:', response);
-      this.selectedUser = { id: null, email: '', password: '', firstName: '', lastName: '', phoneNumber: '' };
-      this.fetchData();
-    });
+    this.router.navigate(['/edit-user', { user: JSON.stringify(user) }])
   }
 
   deleteUser(id: number): void {
