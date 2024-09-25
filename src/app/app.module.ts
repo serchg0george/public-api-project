@@ -27,6 +27,11 @@ import { CageAddComponent } from './components/addforms/cage-add/cage-add.compon
 import { UserAddComponent } from './components/addforms/user-add/user-add.component';
 import { HealthAddComponent } from './components/addforms/health-add/health-add.component';
 import { AnimalAddComponent } from './components/addforms/animal-add/animal-add.component';
+import { UserEditComponent } from './editforms/user-edit/user-edit.component';
+import { CageEditComponent } from './editforms/cage-edit/cage-edit.component';
+import { HealthEditComponent } from './editforms/health-edit/health-edit.component';
+import { RoleEditComponent } from './editforms/role-edit/role-edit.component';
+import { AnimalEditComponent } from './editforms/animal-edit/animal-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,12 @@ import { AnimalAddComponent } from './components/addforms/animal-add/animal-add.
     CageAddComponent,
     UserAddComponent,
     HealthAddComponent,
-    AnimalAddComponent
+    AnimalAddComponent,
+    UserEditComponent,
+    CageEditComponent,
+    HealthEditComponent,
+    RoleEditComponent,
+    AnimalEditComponent
   ],
   imports: [
     BrowserModule,
