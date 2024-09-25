@@ -13,7 +13,6 @@
     <button mat-raised-button color="accent" type="submit">Update</button>
   </form>
 </mat-card>
-<button (click)="navigateToAddCage()">Add cage</button>
 
 <!-- Search bar -->
 <div class="search-bar-wrapper">
@@ -28,6 +27,7 @@
   </mat-form-field>
 </div>
 
+<button mat-raised-button (click)="navigateToAddCage()">Add cage</button>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="cageNumber">

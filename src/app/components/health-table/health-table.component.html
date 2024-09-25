@@ -9,12 +9,14 @@
     <button mat-raised-button color="accent" type="submit">Update</button>
   </form>
 </mat-card>
-<button (click)="navigateToAddHealth()">Add health</button>
+
 <!-- Search bar -->
 <mat-form-field appearance="outline" class="search-bar-container">
   <mat-label>Search by status</mat-label>
   <input matInput [(ngModel)]="searchHealthModel.status" (ngModelChange)="searchHealth()" placeholder="Search by status" />
 </mat-form-field>
+
+<button mat-raised-button (click)="navigateToAddHealth()">Add health</button>
 
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Status Column -->

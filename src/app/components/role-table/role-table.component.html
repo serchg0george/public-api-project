@@ -15,8 +15,6 @@
     </form>
 </mat-card>
 
-<button (click)="navigateToAddRole()" class="add-role-button">Add Role</button>
-
 <!-- Search bar -->
 <div class="search-bar-wrapper">
     <mat-form-field appearance="outline" class="search-bar-container">
@@ -28,6 +26,8 @@
         <input matInput [(ngModel)]="searchRoleModel.description" (ngModelChange)="searchRole()" placeholder="Search by description">
     </mat-form-field>
 </div>
+
+<button mat-raised-button (click)="navigateToAddRole()" class="add-role-button">Add Role</button>
 
 <!-- Role Table-->
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
