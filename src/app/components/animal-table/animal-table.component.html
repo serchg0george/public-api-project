@@ -1,7 +1,6 @@
 <mat-card>
-
   <!-- Animal Form: Add or Update -->
-  <form [formGroup]="animalForm" (ngSubmit)="updateAnimal()" class="animal-form">
+  <form [formGroup]="animalForm" (ngSubmit)="updateAnimal()" *ngIf="selectedAnimal?.id" class="animal-form">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name" placeholder="Enter animal name" required>

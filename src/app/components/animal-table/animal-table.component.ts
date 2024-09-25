@@ -54,18 +54,6 @@ export class AnimalTableComponent implements OnInit {
     this.router.navigate(['/add-animal']);
   }
 
-  editAnimal(animal: Animal): void {
-    this.selectedAnimal = { ...animal };
-    this.animalForm.patchValue({
-      name: animal.name,
-      species: animal.species,
-      age: animal.age,
-      cage: animal.cage.cageNumber,
-      health: animal.health.status
-    });
-    this.fetchAnimals();
-  }
-
   updateAnimal(): void {
     if (this.selectedAnimal) {
       const updatedAnimal = {
@@ -85,6 +73,18 @@ export class AnimalTableComponent implements OnInit {
       });
     }
 
+  }
+
+  editAnimal(animal: Animal): void {
+    this.selectedAnimal = { ...animal };
+    this.animalForm.patchValue({
+      name: animal.name,
+      species: animal.species,
+      age: animal.age,
+      cage: animal.cage.cageNumber,
+      health: animal.health.status
+    });
+    this.fetchAnimals();
   }
 
   deleteAnimal(id: number): void {
