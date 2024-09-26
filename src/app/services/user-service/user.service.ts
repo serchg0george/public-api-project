@@ -15,8 +15,8 @@ export class UserService {
     return this.http.post(this.apiUrl + "/search", user);
   }
 
-  getUser(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getUser(pageNo: number, pageSize: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}?pageNo=${pageNo}&pageSize=${pageSize}`);
   }
 
   addUser(user: User): Observable<any> {

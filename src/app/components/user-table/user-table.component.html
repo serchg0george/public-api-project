@@ -9,11 +9,11 @@
 <button mat-raised-button (click)="navigateToAddUser()">Add user</button>
 
 <!-- User Table -->
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
-  </ng-container>
+  </ng-container>  
 
   <ng-container matColumnDef="password">
     <mat-header-cell *matHeaderCellDef> Password </mat-header-cell>
@@ -46,5 +46,8 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
+
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)">
+</mat-paginator>
 
 <mat-card-subtitle *ngIf="dataSource.data.length === 0">No users found.</mat-card-subtitle>
