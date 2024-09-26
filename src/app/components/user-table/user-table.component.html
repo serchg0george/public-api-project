@@ -9,9 +9,9 @@
 <button mat-raised-button (click)="navigateToAddUser()">Add user</button>
 
 <!-- User Table -->
-<mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef > Email </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
   </ng-container>  
 

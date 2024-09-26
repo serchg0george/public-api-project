@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { UserService } from '../../services/user-service/user.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,7 +11,7 @@ import { PageEvent } from '@angular/material/paginator';
   templateUrl: './user-table.component.html',
   styleUrl: './user-table.component.css'
 })
-export class UserTableComponent implements OnInit, AfterViewInit {
+export class UserTableComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   public displayedColumns: string[] = ['email', 'password', 'firstName', 'lastName', 'phoneNumber', 'actions'];
   public dataSource = new MatTableDataSource<any>();
@@ -19,13 +19,7 @@ export class UserTableComponent implements OnInit, AfterViewInit {
     query: ''
   }
   
-  constructor(private service: UserService, private router: Router, private cdr: ChangeDetectorRef) { };
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.sort.sort({ id: 'email', start: 'asc', disableClear: true });
-    this.cdr.detectChanges();
-  }
+  constructor(private service: UserService, private router: Router) { };
 
   ngOnInit(): void {
     this.fetchData(0, 10);
