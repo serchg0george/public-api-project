@@ -9,6 +9,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { HealthTableComponent } from './components/health-table/health-table.component';
 import { AnimalTableComponent } from './components/animal-table/animal-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +20,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { RoleTableComponent } from './components/role-table/role-table.component';
@@ -67,7 +69,9 @@ import { AnimalEditComponent } from './editforms/animal-edit/animal-edit.compone
     MatToolbar,
     MatIcon,
     MatIconButton,
-    OverlayModule
+    OverlayModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [
     provideClientHydration(),
