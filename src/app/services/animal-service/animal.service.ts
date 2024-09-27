@@ -17,6 +17,10 @@ export class AnimalService {
     return this.http.post(this.apiUrl + "/search", animal);
   }
 
+  getAnimalById(id: number): Observable<Animal> {
+    return this.http.get<Animal>(`${this.apiUrl}/${id}`);
+  }
+
   getAnimals(): Observable<Animal[]> {
     return this.http.get<Animal[]>(this.apiUrl);
   }

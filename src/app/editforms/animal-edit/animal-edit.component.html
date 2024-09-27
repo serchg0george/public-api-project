@@ -1,0 +1,33 @@
+<mat-card>
+  <form [formGroup]="animalForm" (ngSubmit)="updateAnimal()" class="animal-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter animal name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Species</mat-label>
+      <input matInput formControlName="species" placeholder="Enter species" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput formControlName="age" type="number" placeholder="Enter age" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Cage Number</mat-label>
+      <input matInput formControlName="cage" placeholder="Enter cage number" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Health Status</mat-label>
+      <input matInput formControlName="health" placeholder="Enter health status" required>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" type="submit">Update Animal</button>
+      <button mat-raised-button color="accent" type="button" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+</mat-card>

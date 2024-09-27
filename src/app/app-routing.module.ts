@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'add-user', component: UserAddComponent },
   { path: 'edit-user', component: UserEditComponent},
   { path: 'edit-cage', component: CageEditComponent},
-  { path: 'edit-animal', component: AnimalEditComponent},
+  { path: 'edit-animal/:id', component: AnimalEditComponent},
   { path: 'edit-health', component: HealthEditComponent},
   { path: 'edit-role', component: RoleEditComponent}
 ];

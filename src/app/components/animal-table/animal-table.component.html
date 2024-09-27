@@ -1,5 +1,4 @@
-<mat-card>
-  <!-- Animal Form: Add or Update -->
+<!-- <mat-card>
   <form [formGroup]="animalForm" (ngSubmit)="updateAnimal()" *ngIf="selectedAnimal?.id" class="animal-form">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
@@ -35,7 +34,7 @@
       </button>
     </div>
   </form>
-</mat-card>
+</mat-card> -->
 
 <!-- Search bar -->
 <div class="search-bar-wrapper">
@@ -50,47 +49,34 @@
 
 <!-- Animal Table -->
 <mat-card>
-  <mat-card-title>Animal List</mat-card-title>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 animal-table">
 
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-      <mat-cell *matCellDef="let animal">{{ animal.id }}</mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
       <mat-cell *matCellDef="let animal">{{ animal.name }}</mat-cell>
     </ng-container>
 
-    <!-- Species Column -->
     <ng-container matColumnDef="species">
       <mat-header-cell *matHeaderCellDef>Species</mat-header-cell>
       <mat-cell *matCellDef="let animal">{{ animal.species }}</mat-cell>
     </ng-container>
 
-    <!-- Age Column -->
     <ng-container matColumnDef="age">
       <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
       <mat-cell *matCellDef="let animal">{{ animal.age }}</mat-cell>
     </ng-container>
 
-    <!-- Cage Number Column -->
     <ng-container matColumnDef="cage">
       <mat-header-cell *matHeaderCellDef>Cage Number</mat-header-cell>
       <mat-cell *matCellDef="let animal">{{ animal.cage.cageNumber }}</mat-cell>
     </ng-container>
 
-    <!-- Health Status Column -->
     <ng-container matColumnDef="health">
       <mat-header-cell *matHeaderCellDef>Health Status</mat-header-cell>
       <mat-cell *matCellDef="let animal">{{ animal.health.status }}</mat-cell>
     </ng-container>
 
-    <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
       <mat-cell *matCellDef="let animal">
@@ -99,11 +85,9 @@
       </mat-cell>
     </ng-container>
 
-    <!-- Header and Row definitions -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
 
-  <!-- No data message -->
   <mat-card-subtitle *ngIf="dataSource.data.length === 0">No animals found.</mat-card-subtitle>
 </mat-card>
