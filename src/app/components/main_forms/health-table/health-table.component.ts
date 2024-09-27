@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HealthService } from '../../services/health-service/health.service';
+import { HealthService } from '../../../services/health-service/health.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Health } from '../../interfaces/health.model';
 import { Router } from '@angular/router';
-import { HealthSearch } from '../../interfaces/healthsearch.model';
+import { HealthSearch } from '../../../interfaces/healthsearch.model';
 @Component({
   selector: 'health-table',
   templateUrl: './health-table.component.html',

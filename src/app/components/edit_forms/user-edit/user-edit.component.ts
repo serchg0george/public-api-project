@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user-service/user.service';
+import { UserService } from '../../../services/user-service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class UserEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private service: UserService, private router: Router) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
       if (params['user']) {
         this.user = JSON.parse(params['user']);

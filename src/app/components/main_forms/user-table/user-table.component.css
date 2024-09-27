@@ -1,34 +1,38 @@
-.add-role-form, .edit-role-form {
+.add-user-form, .edit-user-form {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
   }
-  
+
   mat-form-field {
     width: 100%;
     margin-bottom: 10px;
   }
-  
+
   mat-card {
     padding: 20px;
     margin-bottom: 20px;
   }
-  
+
   mat-table {
     width: 100%;
     margin-top: 20px;
   }
-  
+
   mat-header-cell, mat-cell {
     padding: 8px;
   }
-  
+
   button {
     margin-right: 10px;
   }
-  
+
+  .search-bar-wrapper {
+    display: flex;
+    gap: 10px;
+  }
   .search-bar-container {
-    padding: 30px 56px 0px 8px;
+    padding: 30px 56px 0 8px;
     border-radius: 32px;
     display: flex;
     align-items: center;
@@ -40,16 +44,10 @@
       min-width: 352px;
     }
   }
-    
-  mat-form-field {
-    width: 100%;
-  }
-
-  .search-bar-wrapper {
-    display: flex;
-    gap: 10px; /* Adjust the gap as needed */
-  }
-  
   .search-bar-container {
     flex: 1;
+  }
+
+  mat-form-field {
+    width: 100%;
   }

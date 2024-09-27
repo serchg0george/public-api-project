@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AnimalService } from '../../services/animal-service/animal.service';
-import { Animal } from '../../interfaces/animal.model';
+import { AnimalService } from '../../../services/animal-service/animal.service';
+import { Animal } from '../../../interfaces/animal.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AnimalEditComponent implements OnInit {
   @Input() animal: Animal | null = null;
-  
+
   animalForm = new FormGroup({
     name: new FormControl('', Validators.required),
     species: new FormControl('', Validators.required),

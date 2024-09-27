@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HealthTableComponent } from './components/health-table/health-table.component';
-import { DataTableComponent } from './components/data-table/data-table.component';
-import { AnimalTableComponent } from './components/animal-table/animal-table.component';
-import { UserTableComponent } from './components/user-table/user-table.component';
-import { RoleTableComponent } from './components/role-table/role-table.component';
-import { RoleAddComponent } from './components/addforms/role-add/role-add.component';
-import { CageAddComponent } from './components/addforms/cage-add/cage-add.component';
-import { AnimalAddComponent } from './components/addforms/animal-add/animal-add.component';
-import { HealthAddComponent } from './components/addforms/health-add/health-add.component';
-import { UserAddComponent } from './components/addforms/user-add/user-add.component';
-import { UserEditComponent } from './editforms/user-edit/user-edit.component';
-import { CageEditComponent } from './editforms/cage-edit/cage-edit.component';
-import { AnimalEditComponent } from './editforms/animal-edit/animal-edit.component';
-import { HealthEditComponent } from './editforms/health-edit/health-edit.component';
-import { RoleEditComponent } from './editforms/role-edit/role-edit.component';
+import { HealthTableComponent } from './components/main_forms/health-table/health-table.component';
+import { DataTableComponent } from './components/main_forms/data-table/data-table.component';
+import { AnimalTableComponent } from './components/main_forms/animal-table/animal-table.component';
+import { UserTableComponent } from './components/main_forms/user-table/user-table.component';
+import { RoleTableComponent } from './components/main_forms/role-table/role-table.component';
+import { RoleAddComponent } from './components/add_forms/role-add/role-add.component';
+import { CageAddComponent } from './components/add_forms/cage-add/cage-add.component';
+import { AnimalAddComponent } from './components/add_forms/animal-add/animal-add.component';
+import { HealthAddComponent } from './components/add_forms/health-add/health-add.component';
+import { UserAddComponent } from './components/add_forms/user-add/user-add.component';
+import { UserEditComponent } from './components/edit_forms/user-edit/user-edit.component';
+import { CageEditComponent } from './components/edit_forms/cage-edit/cage-edit.component';
+import { AnimalEditComponent } from './components/edit_forms/animal-edit/animal-edit.component';
+import { HealthEditComponent } from './components/edit_forms/health-edit/health-edit.component';
+import { RoleEditComponent } from './components/edit_forms/role-edit/role-edit.component';
 const routes: Routes = [
   { path: 'health', component: HealthTableComponent },
   { path: 'data', component: DataTableComponent },

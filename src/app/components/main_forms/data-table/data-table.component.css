@@ -1,4 +1,4 @@
-.add-health-form, .edit-health-form {
+.add-cage-form, .edit-cage-form {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -27,8 +27,12 @@ button {
   margin-right: 10px;
 }
 
-.search-bar-container {
-  padding: 30px 56px 0px 8px;
+mat-form-field {
+  width: 100%;
+}
+
+.search-bar-wrapper {
+  padding: 30px 56px 0 8px;
   border-radius: 32px;
   display: flex;
   align-items: center;
@@ -42,10 +46,5 @@ button {
 }
 
 .search-bar-container {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-mat-form-field {
-  width: 100%;
+  flex: 1;
 }

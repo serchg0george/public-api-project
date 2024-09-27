@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RoleService } from '../../services/role-service/role.service';
+import { RoleService } from '../../../services/role-service/role.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Role } from '../../interfaces/role.model';
+import { Role } from '../../../interfaces/role.model';
 import { Router } from '@angular/router';
-import { RoleSearch } from '../../interfaces/rolesearch.model';
+import { RoleSearch } from '../../../interfaces/rolesearch.model';
 
 @Component({
   selector: 'app-role-table',

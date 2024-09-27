@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimalService } from '../../services/animal-service/animal.service';
+import { AnimalService } from '../../../services/animal-service/animal.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Animal } from '../../interfaces/animal.model';
-import { AnimalSearch } from '../../interfaces/animalsearch.model';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Animal } from '../../../interfaces/animal.model';
+import { AnimalSearch } from '../../../interfaces/animalsearch.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -61,7 +61,7 @@ export class AnimalTableComponent implements OnInit {
   deleteAnimal(id: number): void {
     this.animalService.deleteAnimal(id).subscribe(() => {
       console.log('Animal deleted');
-      this.fetchAnimals(); 
+      this.fetchAnimals();
     });
   }
 

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/cage-service/data.service';
+import { DataService } from '../../../services/cage-service/data.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Cage } from '../../interfaces/cage.model';
 import { Router } from '@angular/router';
-import { CageSearch } from '../../interfaces/cagesearch.model';
+import { CageSearch } from '../../../interfaces/cagesearch.model';
 
 @Component({
   selector: 'data-table',

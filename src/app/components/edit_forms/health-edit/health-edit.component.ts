@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HealthService } from '../../services/health-service/health.service';
+import { HealthService } from '../../../services/health-service/health.service';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-health-edit',

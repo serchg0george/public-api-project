@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/cage-service/data.service';
+import { DataService } from '../../../services/cage-service/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

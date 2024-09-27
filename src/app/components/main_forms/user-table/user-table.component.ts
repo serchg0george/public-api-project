@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { UserService } from '../../services/user-service/user.service';
+import { UserService } from '../../../services/user-service/user.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { UserSearch } from '../../interfaces/usersearch.model';
+import { UserSearch } from '../../../interfaces/usersearch.model';
 import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -18,7 +18,7 @@ export class UserTableComponent implements OnInit {
   public searchUserModel: UserSearch = {
     query: ''
   }
-  
+
   constructor(private service: UserService, private router: Router) { };
 
   ngOnInit(): void {
