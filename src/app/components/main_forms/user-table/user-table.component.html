@@ -47,7 +47,7 @@
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
-<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]" (page)="onPageChange($event)">
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 15]" (page)="onPageChange($event)">
 </mat-paginator>
 
 <mat-card-subtitle *ngIf="dataSource.data.length === 0">No users found.</mat-card-subtitle>
