@@ -15,8 +15,8 @@ export class HealthService {
     return this.http.post(this.apiUrl + "/search", health);
   }
 
-  getHealth(pageNo: number, pageSize: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?pageNo=${pageNo}&pageSize=${pageSize}`);
+  getHealth(pageNo: number, pageSize: number): Observable<Health[]> {
+    return this.http.get<Health[]>(`${this.apiUrl}?pageNo=${pageNo}&pageSize=${pageSize}`);
   }
 
   addHealth(health: Health): Observable<any> {

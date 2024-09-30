@@ -15,8 +15,8 @@ export class RoleService {
     return this.http.post(this.apiUrl + "/search", role);
   }
 
-  getRole(pageNo: number, pageSize: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?pageNo=${pageNo}&pageSize=${pageSize}`);
+  getRole(pageNo: number, pageSize: number): Observable<Role[]> {
+    return this.http.get<Role[]>(`${this.apiUrl}?pageNo=${pageNo}&pageSize=${pageSize}`);
   }
 
   addRole(role: Role): Observable<any> {
