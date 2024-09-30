@@ -21,8 +21,8 @@ export class AnimalService {
     return this.http.get<Animal>(`${this.apiUrl}/${id}`);
   }
 
-  getAnimals(): Observable<Animal[]> {
-    return this.http.get<Animal[]>(this.apiUrl);
+  getAnimals(pageNo: number, pageSize: number): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${this.apiUrl}?pageNo=${pageNo}&pageSize=${pageSize}`);
   }
 
   addAnimal(animal: Animal): Observable<Animal> {

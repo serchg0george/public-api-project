@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { AnimalService } from '../../../services/animal-service/animal.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Animal } from '../../../interfaces/animal.model';
 import { AnimalSearch } from '../../../interfaces/animalsearch.model';
 import { Router } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'animal-table',
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
   styleUrl: './animal-table.component.css'
 })
 export class AnimalTableComponent implements OnInit {
+  @ViewChild(MatSort) sort!: MatSort;
   public displayedColumns: string[] = ['name', 'species', 'age', 'cage', 'health', 'actions'];
   public dataSource = new MatTableDataSource<Animal>();
   public selectedAnimal: Animal | null = null;
@@ -31,18 +34,18 @@ export class AnimalTableComponent implements OnInit {
   constructor(private animalService: AnimalService, private router: Router) { }
 
   ngOnInit(): void {
-    this.fetchAnimals();
+    this.fetchAnimals(0, 10);
   }
 
-  fetchAnimals(): void {
-    this.animalService.getAnimals().subscribe(data => {
+  fetchAnimals(pageNo: number, pageSize: number): void {
+    this.animalService.getAnimals(pageNo, pageSize).subscribe(data => {
       this.dataSource.data = data;
     });
   }
 
   searchAnimal() {
     if (!this.searchAnimalModel.query) {
-      this.fetchAnimals();
+      this.fetchAnimals(0, 10);
     } else {
       this.animalService.searchAnimal(this.searchAnimalModel).subscribe((response) => {
         this.dataSource.data = response;
@@ -58,10 +61,14 @@ export class AnimalTableComponent implements OnInit {
     this.router.navigate(['/edit-animal', animal.id]);
   }
 
+  onPageChange(event: PageEvent) {
+    this.fetchAnimals(event.pageIndex, event.pageSize);
+  }
+
   deleteAnimal(id: number): void {
     this.animalService.deleteAnimal(id).subscribe(() => {
       console.log('Animal deleted');
-      this.fetchAnimals();
+      this.fetchAnimals(0, 10);
     });
   }
 
